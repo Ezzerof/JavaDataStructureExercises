@@ -1,16 +1,16 @@
-package org.example.linked_list.constructor;
+package org.example.linked_list.append;
 
 public class LinkedList {
-
-    // CREATE CLASS VARIABLES, NODE CLASS, AND CONSTRUCTOR HERE //
 
     private Node head;
     private Node tail;
     private int length;
+
     class Node {
         int value;
         Node next;
-        public Node(int value) {
+
+        Node(int value) {
             this.value = value;
         }
     }
@@ -19,7 +19,7 @@ public class LinkedList {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
-        length++;
+        length = 1;
     }
 
     public void printList() {
@@ -48,5 +48,26 @@ public class LinkedList {
 
     public void getLength() {
         System.out.println("Length: " + length);
+    }
+
+    public void makeEmpty() {
+        head = null;
+        tail = null;
+        length = 0;
+    }
+
+    public void append(int value) {
+        Node newNode = new Node(value);
+        tail = newNode;
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        length++;
     }
 }
