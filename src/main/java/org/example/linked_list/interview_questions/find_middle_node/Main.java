@@ -1,4 +1,4 @@
-package org.example.linked_list.interview_questions;
+package org.example.linked_list.interview_questions.find_middle_node;
 
 public class Main {
 

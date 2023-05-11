@@ -1,9 +1,9 @@
-package org.example.linked_list.interview_questions;
+package org.example.linked_list.interview_questions.has_loop;
 
 public class LinkedList {
     /**
-     * Implement a method called findMiddleNode that returns the middle node of the linked list.
-     * If the list has an even number of nodes, the method should return the second middle node.
+     * Implement a method called hasLoop that checks whether the list contains a loop or not.
+     * If the list contains a loop, the method should return true; otherwise, it should return false.
      */
     private Node head;
     private Node tail;
@@ -72,19 +72,29 @@ public class LinkedList {
     }
 
     public Node findMiddleNode() {
-        if (head == null) {
-            return null;
-        }
-
-        Node current = head;
+        Node slow = head;
         Node fast = head;
 
-        while (fast.next != null) {
-            current = current.next;
-            fast = current.next.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        return current;
+        return slow;
+    }
+
+    public boolean hasLoop() {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast)
+                return true;
+        }
+
+        return false;
     }
 
 }
